@@ -6,6 +6,7 @@ use App\Http\Controllers\KelasController;
 use App\Http\Controllers\SiswaController;
 use App\Http\Controllers\NilaiController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,6 +56,15 @@ Route::middleware(['auth.check'])->group(function(){
     ;
     Route::post('nilai/edit_nilai/{id}',[NilaiController::class,'edit_nilai'])
     ->name('edit_nilai');
+
+    //profile
+    Route::get('profile',[ProfileController::class,'index'])
+    ->name('profile');
+    Route::post('aksi_edit_profile',[ProfileController::class,'aksi_edit_profile'])
+    ->name('aksi_edit_profile');
+    //logout
+    Route::get('logout',[AuthController::class,'logout'])
+    ->name('logout');
 
 });
 
